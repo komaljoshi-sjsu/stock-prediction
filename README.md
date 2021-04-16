@@ -4,3 +4,4 @@
 
 1. LSTM(Long Short Term Memory)
 2. Reenforcement Learning
+3. XGBoost
