@@ -16,4 +16,4 @@ We are using yfinance to take real time data of stocks.
 2. Auto-Arima Algorithm
 3. KNN(k-Nearest Neighbours Regression)
 4. Support Vector Machine
-5. Linear Regression
+5. Random Forest Regression
