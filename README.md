@@ -1,8 +1,14 @@
 # Stock Price Predictions
 
-This is a stock price prediction application which predicts current stock price based on past data. We are using 5 different techniques to perform the prediction and then carry out a comprehensive comparison between each technique. 
+**PROBLEM STATEMENT**
 
-We are using historical data from Nasdaq to kick start our project. The data contains stock information of 10 years. We will extend our support to following stocks as well: Apple, Microsoft, Tesla and Cisco. As the time permits, we can keep on adding data sets for other companies.
+This stock prediction application will predict current value of stock. It will also suggest the user whether it is a good time to buy this particular stock or sell it. 
+
+Accuracy of the predicted value can be determined from the actual current stock price.
+
+**Data**
+
+We are using yfinance to take real time data of stocks. 
 
 ## Techniques for Stock Prediction
 
