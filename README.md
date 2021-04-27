@@ -22,7 +22,7 @@ Expected visualization:
 
 ![picture](images/lstm_stock_trend.png)
 
-As the graph in above image is showing upwards trend, it will advise user to buy the stock in this case.
+We can use the trend of the above graph advise user whether to buy or sell stock.
 
 **Tools and Libraries**:
 
