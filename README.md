@@ -65,4 +65,11 @@ sklearn, matplotlib, pandas, yfinance, numpy and math
 
   
 
-5. Random Forest Regression
+**5. Random Forest Regression**
+
+[Random Forest Regression](https://medium.com/swlh/random-forest-and-its-implementation-71824ced454f)
+
+**Tools and Libraries**:
+
+sklearn, matplotlib, pandas, yfinance, numpy and math
+
