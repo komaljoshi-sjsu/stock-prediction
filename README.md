@@ -35,6 +35,10 @@ Following link is used to understand about Auto-ARIMA:
 [AUTO-ARIMA](https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/#:~:text=ARIMA%2C%20short%20for%20'AutoRegressive%20Integrated,to%20predict%20the%20future%20values)
 
 ![picture](images/Auto_ARIMA_pred.png)
+
+**3. Support Vector Machine (Anagha)**
+
+
 **Tools and Libraries**:
 sklearn, matplotlib, pandas, yfinance, numpy and statsmodels.
 
