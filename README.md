@@ -35,15 +35,18 @@ Following link is used to understand about Auto-ARIMA:
 [AUTO-ARIMA](https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/#:~:text=ARIMA%2C%20short%20for%20'AutoRegressive%20Integrated,to%20predict%20the%20future%20values)
 
 ![picture](images/Auto_ARIMA_pred.png)
-
-**3. Support Vector Machine (Anagha)**
-
-[PREDICTION USING SVM](https://www.sciencedirect.com/science/article/pii/S2405918818300060)
-
-
 **Tools and Libraries**:
 sklearn, matplotlib, pandas, yfinance, numpy and statsmodels.
 
-4. KNN(k-Nearest Neighbours Regression)
+**3. KNN(k-Nearest Neighbours Regression) (Neha Poonia)**
 
+Following link is used to understand about KNN:
+
+[KNN](https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761)
+
+**Tools and Libraries**:
+
+sklearn, matplotlib, pandas, yfinance, numpy and math
+
+4. Support Vector Machine
 5. Random Forest Regression
