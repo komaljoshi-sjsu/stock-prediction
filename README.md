@@ -42,6 +42,6 @@ Following link is used to understand about Auto-ARIMA:
 **Tools and Libraries**:
 sklearn, matplotlib, pandas, yfinance, numpy and statsmodels.
 
-3. KNN(k-Nearest Neighbours Regression)
-4. Support Vector Machine
+4. KNN(k-Nearest Neighbours Regression)
+
 5. Random Forest Regression
