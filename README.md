@@ -45,8 +45,13 @@ Following link is used to understand about KNN:
 
 [KNN](https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761)
 
+**Tools and Libraries**:
+
+sklearn, matplotlib, pandas, yfinance, numpy and math
 
 **4. Support Vector Machine (Anagha)** 
+
+[PREDICTION USING SVM](https://www.sciencedirect.com/science/article/pii/S2405918818300060)
 
 
 **Tools and Libraries**:
