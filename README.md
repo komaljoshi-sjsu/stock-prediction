@@ -47,7 +47,7 @@ Following link is used to understand about KNN:
 [KNN](https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761)
 
 
-**4. Support Vector Machine (Anagha) ** 
+**4. Support Vector Machine (Anagha)** 
 
 
 **Tools and Libraries**:
