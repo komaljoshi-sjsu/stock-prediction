@@ -20,7 +20,6 @@ Following link is used to understand about LSTM:
 
 Expected visualization:
 
-![picture](images/lstm_stock_trend.png)
 
 ![picture](images/lstm_future_trend.png)
 
