@@ -38,7 +38,9 @@ Following link is used to understand about Auto-ARIMA:
 
 **3. Support Vector Machine (Anagha)**
 
-[Prediction using SVM](https://www.sciencedirect.com/science/article/pii/S2405918818300060)
+[PREDICTION USING SVM](https://www.sciencedirect.com/science/article/pii/S2405918818300060)
+
+
 **Tools and Libraries**:
 sklearn, matplotlib, pandas, yfinance, numpy and statsmodels.
 
