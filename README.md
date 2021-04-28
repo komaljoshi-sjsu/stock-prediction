@@ -22,6 +22,8 @@ Expected visualization:
 
 ![picture](images/lstm_stock_trend.png)
 
+![picture](images/lstm_future_trend.png)
+
 We can use the trend of the above graph advise user whether to buy or sell stock.
 
 **Tools and Libraries**:
