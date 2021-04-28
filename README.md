@@ -8,7 +8,7 @@ Accuracy of the trend can be verified from the real-time data we are using by vi
 
 **Data Set**
 
-We are using yfinance to take real time data of stocks. This api allows user to get data based on any given time-frame.
+We are using [yfinance](https://pypi.org/project/yfinance/) to take real time data of stocks. This api allows user to get data based on any given time-frame.
 
 ## Techniques for Stock Prediction
 
