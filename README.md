@@ -49,7 +49,7 @@ Following link is used to understand about KNN:
 **Tools and Libraries**:
 
 sklearn, matplotlib, pandas, yfinance, numpy and math
-**4. Support Vector Machine (Anagha) **
- 
+**4. Support Vector Machine (Anagha) ** 
+  
 
 5. Random Forest Regression
