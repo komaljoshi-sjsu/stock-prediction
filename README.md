@@ -28,8 +28,16 @@ We can use the trend of the above graph advise user whether to buy or sell stock
 
 sklearn, keras, matplotlib, pandas, yfinance and numpy.
 
+**2. Auto-ARIMA(‘Auto Regressive Integrated Moving Average’) (Akash)**
+
+Following link is used to understand about Auto-ARIMA:
+
+[AUTO-ARIMA](https://www.machinelearningplus.com/time-series/arima-model-time-series-forecasting-python/#:~:text=ARIMA%2C%20short%20for%20'AutoRegressive%20Integrated,to%20predict%20the%20future%20values)
+
+**Tools and Libraries**:
+sklearn, matplotlib, pandas, yfinance, numpy and statsmodels.
 
 2. Auto-Arima Algorithm
-3. KNN(k-Nearest Neighbours Regression)
-4. Support Vector Machine
-5. Random Forest Regression
+4. KNN(k-Nearest Neighbours Regression)
+5. Support Vector Machine
+6. Random Forest Regression
