@@ -10,7 +10,7 @@ from keras.layers import Dense
 from keras.layers import LSTM
 from keras.layers import Dropout
 
-class LSTM:
+class StockPredictor:
 
     def inputStockName(self):
         print('Stock Name:')
@@ -97,16 +97,101 @@ class LSTM:
         plt.legend()
         plt.show()
 
+    def stock_prediction_from_interpreter(self):
+        from datetime import datetime
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+        import pandas as pd
+        import yfinance as yf
+        from keras.layers import LSTM, Dense, Dropout
+        from keras.models import Sequential
+        from sklearn.preprocessing import MinMaxScaler
+
+        stock_symbol = 'BRK-A'
+        data = yf.Ticker(stock_symbol)
+        historical_data = data.history(period="3y")
+        closing_price_data = historical_data.iloc[:, 0:4]
+
+        # Split dataset into training and testing dataset
+        # Data older than 60 days is training dataset and remaining is testing dataset
+        testing_dataframe = closing_price_data[closing_price_data.index > datetime.utcnow() - pd.to_timedelta('60days')]
+        training_dataframe = closing_price_data[closing_price_data.index < testing_dataframe.index[0]]
+        print('training set shape:', training_dataframe.shape)
+        print('testing set shape:', testing_dataframe.shape)
+
+        training_dataset = training_dataframe.values
+        transformer_x = MinMaxScaler(feature_range = (0, 1))
+        training_dataset_scaled_x = transformer_x.fit_transform(training_dataset)
+
+        training_dataset_y = training_dataframe.iloc[:, 3:4].values
+        transformer_y = MinMaxScaler(feature_range = (0, 1))
+        training_dataset_scaled_y = transformer_y.fit_transform(training_dataset_y)
+
+        X_train = []
+        y_train = []
+
+        for i in range(60, len(training_dataset_scaled_x)):
+            X_train.append(training_dataset_scaled_x[i-60:i, :])
+            y_train.append(training_dataset_scaled_y[i, 0])
+
+        X_train, y_train = np.array(X_train), np.array(y_train)
+
+        stock_prediction_model = Sequential()
+        stock_prediction_model.add(LSTM(units = 50, return_sequences = True, input_shape = (X_train.shape[1], 4)))
+        stock_prediction_model.add(Dropout(0.2))
+        stock_prediction_model.add(LSTM(units = 50, return_sequences = True))
+        stock_prediction_model.add(Dropout(0.2))
+        stock_prediction_model.add(LSTM(units = 50, return_sequences = True))
+        stock_prediction_model.add(Dropout(0.2))
+        stock_prediction_model.add(LSTM(units = 50))
+        stock_prediction_model.add(Dropout(0.2))
+        stock_prediction_model.add(Dense(units = 1))
+        stock_prediction_model.compile(optimizer = 'adam', loss = 'mean_squared_error')
+
+        # fit the model
+        stock_prediction_model.fit(X_train, y_train, epochs = 100, batch_size = 32)
+
+        # save model
+        # stock_prediction_model.save('stock_prediction_model')
+
+        real_stock_price = testing_dataframe.iloc[:, 3:4].values
+
+
+        inputs = closing_price_data[len(closing_price_data) - len(testing_dataframe) - 60:].values
+        # inputs = inputs.reshape(-1,1)
+        inputs = transformer_x.transform(inputs)
+
+        X_test = []
+        for i in range(60, len(inputs)):
+            X_test.append(inputs[i-60:i, :])
+
+        X_test = np.array(X_test)
+
+        predicted_stock_price = stock_prediction_model.predict(X_test)
+        predicted_stock_price = transformer_y.inverse_transform(predicted_stock_price)
+
+        plt.plot(real_stock_price, color = 'black', label = '{} Stock Price'.format(stock_symbol))
+        plt.plot(predicted_stock_price, color = 'green', label = 'Predicted {} Stock Price'.format((stock_symbol)))
+        plt.title('{} Stock Price Prediction'.format(stock_symbol))
+        plt.xlabel('Time')
+        plt.ylabel('{} Stock Price'.format(stock_symbol))
+        plt.legend()
+        plt.show()
+        plt.savefig('graph.png')
+
 if __name__ == "__main__":
-    lstm = LSTM()
-    lstm.inputStockName()
-    X = lstm.initStockData()
-    x,x_test = lstm.train_test_split(X)
-    feature,label = lstm.create_feature_label_set(x)
-    model = lstm.training_lstm(feature,label)
-    test_features = lstm.test_data(model,x_test)
-    lstm.predictions(test_features)
+    lstm = StockPredictor()
+    # lstm.inputStockName()
+    # X = lstm.initStockData()
+    # x,x_test = lstm.train_test_split(X)
+    # feature,label = lstm.create_feature_label_set(x)
+    # model = lstm.training_lstm(feature,label)
+    # test_features = lstm.test_data(model,x_test)
+    # lstm.predictions(test_features)
     #test data
+
+    lstm.stock_prediction_from_interpreter()
 
 
 
