@@ -104,29 +104,27 @@ class StockPredictor:
         import numpy as np
         import pandas as pd
         import yfinance as yf
-        from keras.layers import LSTM, Dense, Dropout
+        from keras.layers import LSTM, Activation, Dense, Dropout
         from keras.models import Sequential
         from sklearn.preprocessing import MinMaxScaler
 
         stock_symbol = 'BRK-A'
         data = yf.Ticker(stock_symbol)
         historical_data = data.history(period="3y")
-        closing_price_data = historical_data.iloc[:, 0:4]
+        ohlc_avg = pd.DataFrame(historical_data.iloc[:, 0:4].mean(axis=1), columns=['OHLC_avg'])
 
         # Split dataset into training and testing dataset
-        # Data older than 60 days is training dataset and remaining is testing dataset
-        testing_dataframe = closing_price_data[closing_price_data.index > datetime.utcnow() - pd.to_timedelta('60days')]
-        training_dataframe = closing_price_data[closing_price_data.index < testing_dataframe.index[0]]
+        # Data older than 90 days is training dataset and remaining is testing dataset
+        testing_dataframe = ohlc_avg[ohlc_avg.index > datetime.utcnow() - pd.to_timedelta('90days')]
+        training_dataframe = ohlc_avg[ohlc_avg.index < testing_dataframe.index[0]]
         print('training set shape:', training_dataframe.shape)
         print('testing set shape:', testing_dataframe.shape)
 
         training_dataset = training_dataframe.values
-        transformer_x = MinMaxScaler(feature_range = (0, 1))
-        training_dataset_scaled_x = transformer_x.fit_transform(training_dataset)
+        transformer = MinMaxScaler(feature_range = (0, 1))
+        training_dataset_scaled_x = transformer.fit_transform(training_dataset)
 
-        training_dataset_y = training_dataframe.iloc[:, 3:4].values
-        transformer_y = MinMaxScaler(feature_range = (0, 1))
-        training_dataset_scaled_y = transformer_y.fit_transform(training_dataset_y)
+        training_dataset_scaled_y = training_dataset_scaled_x
 
         X_train = []
         y_train = []
@@ -138,7 +136,7 @@ class StockPredictor:
         X_train, y_train = np.array(X_train), np.array(y_train)
 
         stock_prediction_model = Sequential()
-        stock_prediction_model.add(LSTM(units = 50, return_sequences = True, input_shape = (X_train.shape[1], 4)))
+        stock_prediction_model.add(LSTM(units = 50, return_sequences = True, input_shape = (X_train.shape[1], 1)))
         stock_prediction_model.add(Dropout(0.2))
         stock_prediction_model.add(LSTM(units = 50, return_sequences = True))
         stock_prediction_model.add(Dropout(0.2))
@@ -147,6 +145,7 @@ class StockPredictor:
         stock_prediction_model.add(LSTM(units = 50))
         stock_prediction_model.add(Dropout(0.2))
         stock_prediction_model.add(Dense(units = 1))
+        stock_prediction_model.add(Activation('linear'))
         stock_prediction_model.compile(optimizer = 'adam', loss = 'mean_squared_error')
 
         # fit the model
@@ -155,12 +154,10 @@ class StockPredictor:
         # save model
         # stock_prediction_model.save('stock_prediction_model')
 
-        real_stock_price = testing_dataframe.iloc[:, 3:4].values
+        real_stock_price = testing_dataframe.iloc[:, 0:1].values
 
-
-        inputs = closing_price_data[len(closing_price_data) - len(testing_dataframe) - 60:].values
-        # inputs = inputs.reshape(-1,1)
-        inputs = transformer_x.transform(inputs)
+        inputs = ohlc_avg[len(ohlc_avg) - len(testing_dataframe) - 60:].values
+        inputs = transformer.transform(inputs)
 
         X_test = []
         for i in range(60, len(inputs)):
@@ -169,7 +166,7 @@ class StockPredictor:
         X_test = np.array(X_test)
 
         predicted_stock_price = stock_prediction_model.predict(X_test)
-        predicted_stock_price = transformer_y.inverse_transform(predicted_stock_price)
+        predicted_stock_price = transformer.inverse_transform(predicted_stock_price)
 
         plt.plot(real_stock_price, color = 'black', label = '{} Stock Price'.format(stock_symbol))
         plt.plot(predicted_stock_price, color = 'green', label = 'Predicted {} Stock Price'.format((stock_symbol)))
