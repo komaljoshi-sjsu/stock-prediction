@@ -108,7 +108,17 @@ class StockPredictor:
         from keras.models import Sequential
         from sklearn.preprocessing import MinMaxScaler
 
-        stock_symbol = 'BRK-A'
+        # def what_to_do(historical_ohlc_avg, next_day_prediction, tomorrow):
+        def what_to_do(historical_ohlc_avg, next_day_prediction):
+            mean_of_historical_ohlc_avg = historical_ohlc_avg.mean()[0]
+            if next_day_prediction > mean_of_historical_ohlc_avg:
+                return 'buy'
+            elif next_day_prediction > mean_of_historical_ohlc_avg:
+                return 'sell'
+            else:
+                return 'hold'
+
+        stock_symbol = 'MSFT'
         data = yf.Ticker(stock_symbol)
         historical_data = data.history(period="3y")
         ohlc_avg = pd.DataFrame(historical_data.iloc[:, 0:4].mean(axis=1), columns=['OHLC_avg'])
@@ -159,23 +169,23 @@ class StockPredictor:
         inputs = ohlc_avg[len(ohlc_avg) - len(testing_dataframe) - 60:].values
         inputs = transformer.transform(inputs)
 
-        X_test = []
+        correct = wrong = total = 0
         for i in range(60, len(inputs)):
-            X_test.append(inputs[i-60:i, :])
+            next_day_input = inputs[i-60:i, :]
+            next_day_input = next_day_input.reshape(1, 60, 1)
+            predicted_stock_price = stock_prediction_model.predict(next_day_input)
+            predicted_stock_price = transformer.inverse_transform(predicted_stock_price)
+            prediction = what_to_do(ohlc_avg[len(training_dataframe) + i - 60 - 60:len(training_dataframe) + i - 60], predicted_stock_price[0][0])
+            print('Prediction: Tomorrow (utc:{}) it is more favourable to {}'.format(str(testing_dataframe.index[i-60].date()), prediction))
+            real = what_to_do(ohlc_avg[len(training_dataframe) + i - 60 - 60:len(training_dataframe) + i - 60], real_stock_price[i-60])
+            if prediction != real:
+                wrong += 1
+            else:
+                correct += 1
+            total += 1
 
-        X_test = np.array(X_test)
-
-        predicted_stock_price = stock_prediction_model.predict(X_test)
-        predicted_stock_price = transformer.inverse_transform(predicted_stock_price)
-
-        plt.plot(real_stock_price, color = 'black', label = '{} Stock Price'.format(stock_symbol))
-        plt.plot(predicted_stock_price, color = 'green', label = 'Predicted {} Stock Price'.format((stock_symbol)))
-        plt.title('{} Stock Price Prediction'.format(stock_symbol))
-        plt.xlabel('Time')
-        plt.ylabel('{} Stock Price'.format(stock_symbol))
-        plt.legend()
-        plt.show()
-        plt.savefig('graph.png')
+        print("Correct predictions:", correct)
+        print("Wrong predictions:", wrong)
 
 if __name__ == "__main__":
     lstm = StockPredictor()
