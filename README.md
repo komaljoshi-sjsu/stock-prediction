@@ -67,6 +67,10 @@ sklearn, matplotlib, pandas, yfinance, numpy and math
 
 **5. Random Forest Regression**
 
+Comparison between previos 30 days' values as predicted by the model with the actual values.
+
+![picture](images/Random_Forest.png)
+
 [Random Forest Regression](https://medium.com/swlh/random-forest-and-its-implementation-71824ced454f)
 
 **Tools and Libraries**:
