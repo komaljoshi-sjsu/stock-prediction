@@ -18,17 +18,15 @@ Following link is used to understand about LSTM:
 
 [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 
-Expected visualization:
+**Approach**
 
-Stock Trend Comparison:
+LSTM is used to train the model, where we have fit our data with 100 epochs and 32 batch size. We created 5 layers.
 
-![picture](images/lstm_comparison.png)
+![picture](images/lstm_timestep_based_pred.png)
 
-Future Stock Trend:
+**Testing**
 
-![picture](images/lstm_future_trend.png)
-
-We can use the trend of the above graph advise user whether to buy or sell stock.
+Currently, the data is split into training and testing where last 90 days represent testing. 3 months ago is treated as presetn. Since timestep for our model is 60 days, so our model looks back 60 days to predict tomorrow's future value.
 
 **Tools and Libraries**:
 
