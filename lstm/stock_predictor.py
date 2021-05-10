@@ -13,6 +13,7 @@ In this project, I have chosen OHLC average as our trading indicator.
 """
 
 import argparse
+import sys
 from datetime import datetime
 
 import matplotlib.pyplot as plt
@@ -238,6 +239,10 @@ if __name__ == "__main__":
     lookback = args.lookback
 
     ohlc_avg = get_ohlc_avg(stock_symbol, dataperiod)
+    if ohlc_avg.empty:
+        print('No data availabe for stock:',stock_symbol)
+        sys.exit(0)
+
     print(ohlc_avg.shape)
     print(ohlc_avg.head())
 
