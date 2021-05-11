@@ -75,7 +75,7 @@ It is located in **SVM_stock_price_prediction folder**.
 
 **Approach**
 
-In this study, support vector regression (SVR) analysis is used as a machine learning technique in order to predict the stock market price as well as to predict stock market trend. .Here we calculated the mean of Open,High,Low and Close(ohlc) of each day and is used as input to train the model.Our predicting price is average ohlc of the next day.
+In this study, support vector regression (SVR) analysis is used as a machine learning technique in order to predict the stock market price as well as to predict stock market trend.Here we calculated the mean of Open,High,Low and Close(ohlc) of each day and is used as input to train the model.Our predicting price is average ohlc of the next day.
 
 **Testing**
 
