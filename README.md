@@ -55,26 +55,27 @@ It is located in **KNN_stock_price_prediction folder**.
 
 **Approach**
 
-K-nearest neighbors (KNN) algorithm is a type of supervised ML algorithm which can be used for both classification as well as regression predictive problems . 
+K-nearest neighbors (KNN) algorithm is a type of supervised ML algorithm which can be used for both classification as well as regression predictive problems .
 KNN follows two properties :
 
 Lazy learning algorithm − KNN is a lazy learning algorithm because it does not have a specialized training phase and uses all the data for training while classification.
 
-Non-parametric learning algorithm − KNN is also a non-parametric learning algorithm because it doesn’t assume anything about the underlying data . 
+Non-parametric learning algorithm − KNN is also a non-parametric learning algorithm because it doesn’t assume anything about the underlying data .
 
 **Testing**
 
 Currently, the data is split into training and testing , total data is taken for 3 years where last 10 percent represent testing, so our model looks back to predict tomorrow's future value.
 
-
-
 **Tools and Libraries**:
-
 sklearn, matplotlib, pandas, yfinance, numpy and math
 
 **4. Support Vector Machine (Anagha)**
 
 It is located in **SVM_stock_price_prediction folder**.
+
+**Approach**
+
+In this study, support vector regression (SVR) analysis is used as a machine learning technique in order to predict the stock market price as well as to predict stock market trend. .Here we calculated the mean of Open,High,Low and Close(ohlc) of each day and is used as input to train the model.Our predicting price is average ohlc of the next day.
 
 **Testing**
 
