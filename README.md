@@ -2,7 +2,7 @@
 
 **PROBLEM STATEMENT**
 
-This stock prediction application will predict trend of the stock. It will also suggest the user whether it is a good time to buy this particular stock or sell it. 
+This stock prediction application will predict trend of the stock. It will also suggest the user whether it is a good time to buy this particular stock or sell it.
 
 Accuracy of the trend can be verified from the real-time data we are using by visualizing in the graph.
 
@@ -52,16 +52,15 @@ Following link is used to understand about KNN:
 
 sklearn, matplotlib, pandas, yfinance, numpy and math
 
-**4. Support Vector Machine (Anagha)** 
+**4. Support Vector Machine (Anagha)**
 
 [PREDICTION USING SVM](https://www.sciencedirect.com/science/article/pii/S2405918818300060)
+
 ![picture](images/SVM.png)
 
 **Tools and Libraries**:
 
 sklearn, matplotlib, pandas, yfinance, numpy and math
-
-  
 
 **5. Random Forest Regression**
 
@@ -74,4 +73,3 @@ Comparison between previos 30 days' values as predicted by the model with the ac
 **Tools and Libraries**:
 
 sklearn, matplotlib, pandas, yfinance, numpy and math
-
