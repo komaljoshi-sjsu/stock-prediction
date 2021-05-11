@@ -41,7 +41,7 @@ It is located in **ARIMA folder**.
 
 **Approach**
 
-ARIMA (Auto Regressive Integrated Moving Average)is used to explain given time series based on past values,lagged values and future lagged forecast errors so that equation can be used to predict future values. In this model is trained on three different coefficients (P,Q,D) known for AR,MA and I in ARIMA respectively.
+ARIMA (Auto Regressive Integrated Moving Average)is used to explain given time series based on past values,lagged values and future lagged forecast errors so that equation can be used to predict future values. In this,the model is trained on three different coefficients (P,Q,D) known for AR,MA and I in ARIMA respectively.
 
 **Testing**
 
