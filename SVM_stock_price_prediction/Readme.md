@@ -1,5 +1,3 @@
-Package Installation
-
 ## Package Installation
 
 `$ git clone https://github.com/komaljoshi-sjsu/stock-prediction`
@@ -8,6 +6,10 @@ Package Installation
 **Navigate to Files Containing SVM Implementation**
 
 `$ cd SVM_stock_price_prediction/`
+
+**Install requiremets** 
+
+ `$ pip install -r requirements.txt`
 
 **Run the python code**
 
