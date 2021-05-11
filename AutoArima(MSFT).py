@@ -28,9 +28,7 @@ class AutoArima:
         plt.ylabel('Close Prices')
         plt.plot(self.df.Close)
         plt.title('Microsoft Inc. closing price')
-        plt.show()
         plt.savefig("Stock_Close.png")
-        # return self.df
 
     def test_stationarity(self):
         self.df_close = self.df.Close
@@ -98,6 +96,14 @@ class AutoArima:
     def walkForward(self):
         size = int(len(self.df.Close))-60
         train, test = self.df.Close[0:size], self.df.Close[size:len(self.df.Close)]
+        plt.figure(figsize=(10,6))
+        plt.grid(True)
+        plt.xlabel('Dates')
+        plt.ylabel('Closing Prices')
+        plt.plot(train, 'green', label='Train data')
+        plt.plot(test, 'blue', label='Test data')
+        plt.legend()
+        plt.savefig("Train_Test_Split.png")
         history = [x for x in train]
         predictions = list()
         correct = wrong = total = 0
