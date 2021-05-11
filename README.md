@@ -39,6 +39,13 @@ sklearn, keras, matplotlib, pandas, yfinance and numpy.
 
 It is located in **ARIMA folder**.
 
+**Approach**
+ARIMA (Auto Regressive Integrated Moving Average)is used to explain given time series based on past values,lagged values and future lagged forecast errors so that equation can be used to predict future values. In this model is trained on three different coefficients (P,Q,D) known for AR,MA and I in ARIMA respectively.
+
+**Testing**
+
+Currently, the data is split into training and testing where last 90 days represent testing. 3 months ago is treated as present. Since timestep for our model is 60 days, so our model looks back 60 days to predict tomorrow's future value.
+
 **Tools and Libraries**:
 sklearn, matplotlib, pandas, yfinance, numpy and statsmodels.
 
