@@ -44,6 +44,7 @@ Following are steps to run ARIMA for stock trend and advise for Berkshire Hathaw
 4.As ARIMA works on non-stationary data, program will do stationary check usin ADF test. User will see result of stationary test like below
 
 ![help](images/Stationary_Test_Result.png)
+![help](images/StationarityPlot.png)
 
 5. If -p value is greater than 0.05 then we cannot reject the Null hypothesis.In order to perform a time series analysis, we may need to separate seasonality and trend from our series. The resultant series will become stationary through this process. You can see seasonal decompose graph after decomposing process like below.
 ![help](images/seasonal_decompose.png)
