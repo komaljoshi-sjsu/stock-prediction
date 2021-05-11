@@ -30,39 +30,31 @@ User is given various options to make any customization. Following command can b
 
 **python3 AutoArima(MSFT).py --help**
 
-![help](images/file_help.png)
-
 User must enter stock symbol while executing python code. Here BRK-A is Berkshire Hathaway stock.
 Following are steps to run ARIMA for stock trend and advise for Berkshire Hathaway stock:
 
-1. Execute python3 stock_predictor.py 
-2. Enter stokc name.
-3. User can see graph of training and test data. For MSFT, it will look something like below:
-
-![help](images/traintest.png)
-
-
-4. After closing the graph, user will see that model training starts as follows:
+1. Execute python3 AutoArima(MSFT).py
+2. Enter stock name.
 
 ![help](images/userinput.png)
 
-5. Once you input stock name, user will see closing price graph of particular stock
-![help](images/Stock_Close.png.png)
+3. Once you input stock name, user will see closing price graph of particular stock
+![help](images/Stock_Close.png)
 
-6.As ARIMA works on non-stationary data, program will do stationary check usin ADF test. User will see result of stationary test like below
+4.As ARIMA works on non-stationary data, program will do stationary check usin ADF test. User will see result of stationary test like below
 
 ![help](images/Stationary_Test_Result.png)
 
-7. If -p value is greater than 0.05 then we cannot reject the Null hypothesis.In order to perform a time series analysis, we may need to separate seasonality and trend from our series. The resultant series will become stationary through this process. You can see seasonal decompose graph after decomposing process like below.
+5. If -p value is greater than 0.05 then we cannot reject the Null hypothesis.In order to perform a time series analysis, we may need to separate seasonality and trend from our series. The resultant series will become stationary through this process. You can see seasonal decompose graph after decomposing process like below.
 ![help](images/seasonal_decompose.png)
 
-8. In order to train ARIMA model we need three different coeffiecients i.e P,Q and D. Running autoarima model will give us the best values of these three variables as shown below
+6. In order to train ARIMA model we need three different coeffiecients i.e P,Q and D. Running autoarima model will give us the best values of these three variables as shown below
 ![help](images/Auto-Arima-Coefficient.png)
 
-9. Then program will train ARIMA model using those coefficients and will show forcasted values for stock like below.
+7. Then program will train ARIMA model using those coefficients and will show forcasted values for stock like below.
   ![help](images/Forecasted_Values_Arima.png)
   
-10. Now program will go back with 60 days and will start predicting values from that day using trained data(traindata=dataframe-60days,testdata=dataframe-traindata). It will start from -60th day and start predicting values for each day and will compare it with actual price on next day. After comparision it will again train itself and predic values for next day. Predicted values and actual values graph will be shown after this process.
+8. Now program will go back with 60 days and will start predicting values from that day using trained data(traindata=dataframe-60days,testdata=dataframe-traindata). It will start from -60th day and start predicting values for each day and will compare it with actual price on next day. After comparision it will again train itself and predic values for next day. Predicted values and actual values graph will be shown after this process.
 
  ![help](images/ARIMA_Predicted_vs_Actual.png)
 
