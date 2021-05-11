@@ -52,10 +52,13 @@ Following are steps to run ARIMA for stock trend and advise for Berkshire Hathaw
 6. In order to train ARIMA model we need three different coeffiecients i.e P,Q and D. Running autoarima model will give us the best values of these three variables as shown below
 ![help](images/Auto-Arima-Coefficient.png)
 
-7. Then program will train ARIMA model using those coefficients and will show forcasted values for stock like below.
+7. Spliting data in train and test dataset.
+![help](images/Train_Test_Split.png)
+
+8. Then program will train ARIMA model using those coefficients and will show forcasted values for stock like below.
 ![help](images/Forecasted_Values_Arima.png)
   
-8. Now program will go back with 60 days and will start predicting values from that day using trained data(traindata=dataframe-60days,testdata=dataframe-traindata). It will start from -60th day and start predicting values for each day and will compare it with actual price on next day. After comparision it will again train itself and predic values for next day. Predicted values and actual values graph will be shown after this process.
+9. Now program will go back with 60 days and will start predicting values from that day using trained data(traindata=dataframe-60days,testdata=dataframe-traindata). It will start from -60th day and start predicting values for each day and will compare it with actual price on next day. After comparision it will again train itself and predic values for next day. Predicted values and actual values graph will be shown after this process.
 
  ![help](images/ARIMA_Predicted_vs_Actual.png)
 
