@@ -56,6 +56,8 @@ sklearn, matplotlib, pandas, yfinance, numpy and math
 
 [PREDICTION USING SVM](https://www.sciencedirect.com/science/article/pii/S2405918818300060)
 
+![picture](images/SVM.png)
+
 **Tools and Libraries**:
 
 sklearn, matplotlib, pandas, yfinance, numpy and math
