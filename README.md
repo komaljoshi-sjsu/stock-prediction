@@ -67,8 +67,28 @@ It is located in **randomForest folder**.
 sklearn, matplotlib, pandas, yfinance, numpy and math
 
 
-## Findings:
+## Comparison and Findings:
 
-We used three time series based algorithms as can be seen below:
+We used three time series based algorithms, comparison with Microsoft can be seen below:
 
-LSTM
+| Algorithm      | Accuracy    | RMSE          |
+| ---------------| ----------- |---------------|
+| LSTM           | 77%         |0.05           |
+| ARIMA          | >95%        |12.61(unscaled)|
+| SVM            | 80%         |0.04           |
+
+For stock like Microsoft with erratic trends, Arima outperformed SVM and LSTM. It detected stock trend better whereas SVM and LSTM fared better in terms of value prediction. On a 3 year data, SVM slightly outperformed LSTM, whereas on data with max values, LSTM's accuracy is usually lying above 80%.
+
+For stocks with stable growth, like value investing stocks, LSTM is  giving constant better results with accuracy ranging from 91-100%.  
+
+For non time series based algorithms, future predictions on large range of test values were not accurate. For KNN and random forest regressor, 30 day testing data was used and both algorithms performed almost in similar fashion.
+
+| Algorithm      | Accuracy |
+| ----------- | ----------- |
+| KNN      | 70%       |
+| Random Forest   | 70%        |
+
+
+## Future Scope
+
+Time series based algorithms like lstm, arima and svm can be used together to create an ensemble and predict better results. Buying and selling of stocks can  be modified to include buy and sell indicators across the years and then carry out comparison for better testing.
