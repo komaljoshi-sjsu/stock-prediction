@@ -47,6 +47,8 @@ sklearn, matplotlib, pandas, yfinance, numpy and statsmodels.
 Following link is used to understand about KNN:
 
 [KNN](https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761)
+![picture](KNN_stock_price_prediction/Stock_comarision.png)
+![picture](KNN_stock_price_prediction/Predicted_vs_actual.png)
 
 **Tools and Libraries**:
 
