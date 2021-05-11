@@ -163,7 +163,7 @@ def predict_stock_prices(ohlc_avg_data, testing_dataframe_data, model, scaler_tr
         tradin_window_data = ohlc_avg_data[trading_window_start_index:trading_window_end_index]
 
         prediction = suggest_favourable_action(tradin_window_data, next_day_predicted_stock_price[0][0])
-        print('Prediction: Tomorrow (utc:{}) it is more favourable to {}'.format(str(testing_dataframe_data.index[i-60].date()), prediction))
+        print('Suggestion: Tomorrow (utc:{}) it is more favourable to {}'.format(str(testing_dataframe_data.index[i-60].date()), prediction))
 
         real = suggest_favourable_action(tradin_window_data, real_stock_price[i-lookback])
         if prediction != real:
@@ -218,10 +218,41 @@ def plot_full_graph(symbol: str, real_values, predicted_values, train_dataframe)
     plt.xticks(rotation='vertical')
     plt.show()
 
+def predict_stock_prices_multiple_days_into_future(ohlc_avg_data, model, scaler_transformer, number_of_days):
+    """
+    We will use the LSTM model to predict the share price multiple days into the future.
+    
+    Args:
+        ohlc_avg_data: complete dataset with OHLC average values
+        model: trained LSTM model
+        scaler_transformer: Scaler transformer for normalizing and denormalizing the data
+    
+    Returns:
+        predicted_stock_price (list): predicted ohlc stock price
+    """
+    predicted_stock_price = []
+
+    inputs = ohlc_avg_data[-lookback:].values
+    inputs = scaler_transformer.transform(inputs)
+
+    for i in range(lookback, lookback + number_of_days):
+        next_day_input = inputs[i-lookback:i, :]
+        next_day_input = next_day_input.reshape(1, -1, 1)
+        
+        next_day_predicted_stock_price = model.predict(next_day_input)
+        
+        inputs = np.concatenate((inputs, next_day_predicted_stock_price), axis = 0)
+        
+        next_day_predicted_stock_price = scaler_transformer.inverse_transform(next_day_predicted_stock_price)
+        predicted_stock_price.append(next_day_predicted_stock_price[0][0])
+
+    return predicted_stock_price
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Stock predictor',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('stock_symbol', type=str, help='Stock symbol')
+    parser.add_argument('--advice_for_tomorrow', action='store_true')
     parser.add_argument('--dataperiod', type=str, default='3y', help='Period of data to get from yfinance. \
         Valid periods are: “1d”, “5d”, “1mo”, “3mo”, “6mo”, “1y”, “2y”, “5y”, “10y”, “ytd”, “max”')
     parser.add_argument('--epochs', type=int, default=100, help="Number of epochs for training the model.")
@@ -240,37 +271,66 @@ if __name__ == "__main__":
 
     ohlc_avg = get_ohlc_avg(stock_symbol, dataperiod)
     if ohlc_avg.empty:
-        print('No data availabe for stock:',stock_symbol)
+        print('ERROR: No data availabe for stock:',stock_symbol)
+        sys.exit(0)
+    if len(ohlc_avg) < lookback:
+        print('ERROR: Lookback is larger than available data.')
         sys.exit(0)
 
-    print(ohlc_avg.shape)
-    print(ohlc_avg.head())
+    if args.advice_for_tomorrow:
+        training_dataframe = ohlc_avg
+        
+        # normalize data between [0,1] using MinMax Scaler
+        training_dataset = training_dataframe.values
+        training_dataset_scaled = np.copy(training_dataset)
+        transformer = fit_data_scalar(training_dataset_scaled)
 
-    # Split the data into training and testing data
-    training_dataframe, testing_dataframe = split_data(ohlc_avg, split_parameter=split_parameter)
+        # Prepare data with timesteps to feed it into LSTM model
+        X_train, y_train = prepare_data_with_timesteps(training_dataset_scaled, lookback)
 
-    # Visualize data split
-    plot_training_testing_distribution(stock_symbol, training_dataframe, testing_dataframe)
+        # Create and fit the model
+        stock_prediction_model = create_and_fit_LSTM(X_train, y_train, epochs=epochs, batch_size=batch_size)
 
-    # normalize data between [0,1] using MinMax Scaler
-    training_dataset = training_dataframe.values
-    training_dataset_scaled = np.copy(training_dataset)
-    transformer = fit_data_scalar(training_dataset_scaled)
+        # Predict tomorrow
+        next_day_predicted_ohlc_price = predict_stock_prices_multiple_days_into_future(ohlc_avg, stock_prediction_model, transformer, number_of_days=1)
+        print("Tomorrow's prediction:", next_day_predicted_ohlc_price[0])
 
-    # Prepare data with timesteps to feed it into LSTM model
-    X_train, y_train = prepare_data_with_timesteps(training_dataset_scaled, lookback)
+        # Suggest a favourable action based on last 30 trading days
+        trading_window_data = ohlc_avg[-30:]
+        favourable_action = suggest_favourable_action(trading_window_data, next_day_predicted_ohlc_price[0])
+        print('Sugggestion: Tomorrow it is more favourable to', favourable_action)
+    else:
+        print(ohlc_avg.shape)
+        print(ohlc_avg.head())
 
-    # Create and fit the model
-    stock_prediction_model = create_and_fit_LSTM(X_train, y_train, epochs=epochs, batch_size=batch_size)
+        # Split the data into training and testing data
+        training_dataframe, testing_dataframe = split_data(ohlc_avg, split_parameter=split_parameter)
+        if len(training_dataframe) < lookback:
+            print('ERROR: Lookback is larger than available training data.')
+            sys.exit(0)
 
-    # Predict on test set
-    predicted_ohlc_prices = predict_stock_prices(ohlc_avg, testing_dataframe, stock_prediction_model, transformer)
+        # Visualize data split
+        plot_training_testing_distribution(stock_symbol, training_dataframe, testing_dataframe)
 
-    # Visulaize predictions
-    predicted_stock_price_dataframe = pd.DataFrame(data=predicted_ohlc_prices,
-                                                index=testing_dataframe.index,
-                                                columns=testing_dataframe.columns)
-    prediction_vs_real(stock_symbol, testing_dataframe, predicted_stock_price_dataframe)
+        # normalize data between [0,1] using MinMax Scaler
+        training_dataset = training_dataframe.values
+        training_dataset_scaled = np.copy(training_dataset)
+        transformer = fit_data_scalar(training_dataset_scaled)
 
-    # Visulaize training data, testing data and predictions together
-    plot_full_graph(stock_symbol, testing_dataframe, predicted_stock_price_dataframe, training_dataframe)
+        # Prepare data with timesteps to feed it into LSTM model
+        X_train, y_train = prepare_data_with_timesteps(training_dataset_scaled, lookback)
+
+        # Create and fit the model
+        stock_prediction_model = create_and_fit_LSTM(X_train, y_train, epochs=epochs, batch_size=batch_size)
+
+        # Predict on test set
+        predicted_ohlc_prices = predict_stock_prices(ohlc_avg, testing_dataframe, stock_prediction_model, transformer)
+
+        # Visulaize predictions
+        predicted_stock_price_dataframe = pd.DataFrame(data=predicted_ohlc_prices,
+                                                    index=testing_dataframe.index,
+                                                    columns=testing_dataframe.columns)
+        prediction_vs_real(stock_symbol, testing_dataframe, predicted_stock_price_dataframe)
+
+        # Visulaize training data, testing data and predictions together
+        plot_full_graph(stock_symbol, testing_dataframe, predicted_stock_price_dataframe, training_dataframe)
