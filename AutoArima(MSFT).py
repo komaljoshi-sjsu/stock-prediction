@@ -15,12 +15,21 @@ import datetime
 import re
 from math import sqrt
 from matplotlib import pyplot
+import pickle
 
 class AutoArima:
     def loadData(self, x):
         print(x)
         data = yf.Ticker(x)
         self.df = data.history(start="2018-05-10", end="2021-05-09")
+        plt.figure(figsize=(10,6))
+        plt.grid(True)
+        plt.xlabel('Dates')
+        plt.ylabel('Close Prices')
+        plt.plot(self.df.Close)
+        plt.title('Microsoft Inc. closing price')
+        plt.show()
+        plt.savefig("Stock_Close.png")
         # return self.df
 
     def test_stationarity(self):
@@ -191,42 +200,59 @@ class AutoArima:
                                stepwise=True)
 
         smodel.summary()
+        filename = 'S_model.sav'
+        pickle.dump(smodel, open(filename, 'wb'))
         return smodel
 
-    def forecastSeasonalArima(self, smodel,train_data,test_data):
-       # Forecast
-        n_periods = 60
-        fc, confint = smodel.predict(n_periods=n_periods, return_conf_int=True)
-        fc_series = pd.Series(fc, index=test_data.index)
+    def forecastSeasonalArima(self):
+        filename = 'S_model.sav'
+        loaded_model = pickle.load(open(filename, 'rb'))
+        size = int(len(self.df.Close))-60
+        train, test = self.df.Close[0:size], self.df.Close[size:len(self.df.Close)]
+        history = [x for x in train]
+        predictions = list()
+        correct = wrong = total = 0
+        # walk-forward validation
+        for t in range(len(test)):
+            model = ARIMA(history, order=(2,0,0))
+            model_fit = model.fit()
+            output = model_fit.forecast()
+            yhat = output[0][0]
+            predictions.append(yhat)
+            obs = test[t]
+            history.append(obs)
+            prediction = self.what_to_do(self.df.Close[len(self.df.Close[0:size])+t-60:len(self.df.Close[0:size])+t],yhat)
+            print('Prediction: Tomorrow (utc:{}) it is more favourable to {}'.format(str(test.index[t-60].date()), prediction))
+            real = self.what_to_do(self.df.Close[len(self.df.Close[0:size]) + t - 60:len(self.df.Close[0:size]) + t], test[t-60])
+            if prediction != real:
+                wrong += 1
+            else:
+                correct += 1
+            total += 1
+        print("Correct predictions:", correct)
+        print("Wrong predictions:", wrong)
 
-        current_date = train_data.index[-1]
+        series = pd.Series(predictions,index=test.index)
+        error = mean_squared_error(test, predictions)
+        print(error)
         
-        # make series for plotting purpose
-        fc_series = pd.Series(fc, index=test_data.index)
-        lower_series = pd.Series(confint[:, 0], index=test_data.index)
-        upper_series = pd.Series(confint[:, 1], index=test_data.index)
-        
-        # Plot
-        plt1.plot(test_data)
-        plt1.plot(fc_series, color='yellow')
-        plt1.fill_between(lower_series.index,
-                        lower_series,
-                        upper_series,
-                        color='red', alpha=.15)
-        
-        plt1.title("Final Forecast vs Actual Close Price for Microsoft USING S-ARIMA")
-        plt1.savefig('SARIMA-FORECAST.png')
+        #Plot
+        pyplot.figure(figsize=(10,6))
+        pyplot.title("Prediction of CLOSE values of MSFT on history")
+        pyplot.plot(test,color='blue')
+        pyplot.plot(series ,color='red')
+        pyplot.savefig("S-Arima-Result.png")
 
-        mse = mean_squared_error(test_data, fc)
+
+        #Performance Report
+        mse = mean_squared_error(test, series)
         print('MSE: '+str(mse))
-        mae = mean_absolute_error(test_data, fc)
+        mae = mean_absolute_error(test, series)
         print('MAE: '+str(mae))
-        rmse = math.sqrt(mean_squared_error(test_data, fc))
+        rmse = math.sqrt(mean_squared_error(test, series))
         print('RMSE: '+str(rmse))
-        r2 = r2_score(test_data, fc, sample_weight=None, multioutput='uniform_average')
+        r2 = r2_score(test, series, sample_weight=None, multioutput='uniform_average')
         print('R-squared score: ', r2)
-
-# pass stock and days
 
 
 def start() -> None:
@@ -239,7 +265,7 @@ def start() -> None:
     autoArima.forecastAutoArima(model)
     train,test = autoArima.walkForward()
     smodel = autoArima.seasonalArima()
-    autoArima.forecastSeasonalArima(smodel,train,test)
+    autoArima.forecastSeasonalArima()
 
 
 if __name__ == "__main__":
