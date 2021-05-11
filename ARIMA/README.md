@@ -55,7 +55,7 @@ Following are steps to run ARIMA for stock trend and advise for Berkshire Hathaw
 7. Then program will train ARIMA model using those coefficients and will show forcasted values for stock like below.
 ![help](images/Forecasted_Values_Arima.png)
   
-8. Now program will go back with 60 days and will start predicting values from that day using trained data(traindata=dataframe-60days,testdata=dataframe-traindata). It will start from -60th day and start predicting values for each day and will compare it with actual price on next day. After comparision it will again train itself and predic values for next day. Predicted values and actual values graph will be shown after this process.
+8. Now program will go back for 60 days and will start predicting values from that day using trained data(traindata=dataframe-60days,testdata=dataframe-traindata). It will start from -60th day and start predicting values for each day and will compare it with actual price on next day. After comparison it will again train itself and predict value for next day. Predicted values and actual values graph will be shown after this process.
 
  ![help](images/ARIMA_Predicted_vs_Actual.png)
 
@@ -69,7 +69,7 @@ NOTE:There will be model process logs printing while making predictions.
 
 
 ## S-ARIMA for seasonal time-series prediction:
-If there is significant changes in seasonal time-series graph then we can say like there is a seasonal impact on the data and we need to consider this impact to predict values for the future. Fo that there is one more algorithm i.e Seasonal Arima which works best on seasonal timeseries input data. This algorithm does not apllies to all the stocks. Program has implementation of S-ARIMA and it will also run this algorithm in order to perform prediction. After running this program you will see below results.
+If there is significant changes in seasonal time-series graph then we can say like there is a seasonal impact on the data and we need to consider this impact to predict values for the future. Fo that there is one more algorithm i.e Seasonal Arima which works best on seasonal timeseries input data. This algorithm does not aplies to all the stocks. Program has implementation of S-ARIMA and it will also run this algorithm in order to perform prediction. After running this program you will see below results.
 
 ![help](images/S-Arima_performance_report.png)
 ![help](images/S-Arima-Result.png)
