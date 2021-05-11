@@ -1,5 +1,7 @@
 Package Installation
 
+pip install -r requirements.txt
+
 ## Package Installation
 
 `$ git clone https://github.com/komaljoshi-sjsu/stock-prediction`
