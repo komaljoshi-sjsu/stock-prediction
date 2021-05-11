@@ -55,7 +55,7 @@ sklearn, matplotlib, pandas, yfinance, numpy and math
 **4. Support Vector Machine (Anagha)** 
 
 [PREDICTION USING SVM](https://www.sciencedirect.com/science/article/pii/S2405918818300060)
-
+![picture](images/SVM.png)
 
 **Tools and Libraries**:
 
