@@ -1,0 +1,88 @@
+Stock Name:
+ Welcome to Stock predictor
+Enter the starting date :(format -->  "yyyy-mm-dd" ) [*********************100%***********************]  1 of 1 completed
+(679, 1) (679, 1)
+Fitting 3 folds for each of 120 candidates, totalling 360 fits
+-1.614573291188288
+{'metric': 'euclidean', 'n_neighbors': 1, 'weights': 'uniform'}
+The rmse error is 6.984150464172736
+Average share price of MSFT - 108.35440365730926
+For date 2020-02-05 suggestion is to hold 
+For date 2020-02-06 suggestion is to hold 
+For date 2020-02-07 suggestion is to hold 
+For date 2020-02-10 suggestion is to hold 
+For date 2020-02-11 suggestion is to hold 
+For date 2020-02-12 suggestion is to hold 
+For date 2020-02-13 suggestion is to hold 
+For date 2020-02-14 suggestion is to hold 
+For date 2020-02-18 suggestion is to hold 
+For date 2020-02-19 suggestion is to hold 
+For date 2020-02-20 suggestion is to hold 
+For date 2020-02-21 suggestion is to hold 
+For date 2020-02-24 suggestion is to hold 
+For date 2020-02-25 suggestion is to buy 
+For date 2020-02-26 suggestion is to hold 
+For date 2020-02-27 suggestion is to hold 
+For date 2020-02-28 suggestion is to hold 
+For date 2020-03-02 suggestion is to buy 
+For date 2020-03-03 suggestion is to hold 
+For date 2020-03-04 suggestion is to hold 
+For date 2020-03-05 suggestion is to hold 
+For date 2020-03-06 suggestion is to hold 
+For date 2020-03-09 suggestion is to hold 
+For date 2020-03-10 suggestion is to buy 
+For date 2020-03-11 suggestion is to hold 
+For date 2020-03-12 suggestion is to hold 
+For date 2020-03-13 suggestion is to buy 
+For date 2020-03-16 suggestion is to hold 
+For date 2020-03-17 suggestion is to buy 
+For date 2020-03-18 suggestion is to hold 
+For date 2020-03-19 suggestion is to buy 
+For date 2020-03-20 suggestion is to hold 
+For date 2020-03-23 suggestion is to hold 
+For date 2020-03-24 suggestion is to buy 
+For date 2020-03-25 suggestion is to buy 
+For date 2020-03-26 suggestion is to buy 
+For date 2020-03-27 suggestion is to hold 
+For date 2020-03-30 suggestion is to buy 
+For date 2020-03-31 suggestion is to buy 
+For date 2020-04-01 suggestion is to hold 
+For date 2020-04-02 suggestion is to hold 
+For date 2020-04-03 suggestion is to hold 
+For date 2020-04-06 suggestion is to buy 
+For date 2020-04-07 suggestion is to buy 
+For date 2020-04-08 suggestion is to buy 
+For date 2020-04-09 suggestion is to hold 
+For date 2020-04-13 suggestion is to hold 
+For date 2020-04-14 suggestion is to buy 
+For date 2020-04-15 suggestion is to hold 
+For date 2020-04-16 suggestion is to buy 
+For date 2020-04-17 suggestion is to hold 
+For date 2020-04-20 suggestion is to hold 
+For date 2020-04-21 suggestion is to hold 
+For date 2020-04-22 suggestion is to buy 
+For date 2020-04-23 suggestion is to hold 
+For date 2020-04-24 suggestion is to hold 
+For date 2020-04-27 suggestion is to hold 
+For date 2020-04-28 suggestion is to buy 
+For date 2020-04-29 suggestion is to hold 
+For date 2020-04-30 suggestion is to hold 
+For date 2020-05-01 suggestion is to hold 
+For date 2020-05-04 suggestion is to hold 
+For date 2020-05-05 suggestion is to hold 
+For date 2020-05-06 suggestion is to hold 
+For date 2020-05-07 suggestion is to hold 
+For date 2020-05-08 suggestion is to hold 
+For date 2020-05-11 suggestion is to hold 
+For date 2020-05-12 suggestion is to hold 
+For date 2020-05-13 suggestion is to hold 
+For date 2020-05-14 suggestion is to hold 
+For date 2020-05-15 suggestion is to hold 
+For date 2020-05-18 suggestion is to hold 
+For date 2020-05-19 suggestion is to hold 
+For date 2020-05-20 suggestion is to hold 
+For date 2020-05-21 suggestion is to hold 
+Number of correct predictions with error limit 10.0 is 58
+Number of incorrect predictions with error limit 10.0 is 18
+Average deviation for predictions 0.1401314986379523
+Accuracy for predictions is 76.31578947368422
