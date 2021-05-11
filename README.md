@@ -28,7 +28,7 @@ ARIMA implementation can either be visualized in jupyter notebook AutoArima(MSFT
 
 User is given various options to make any customization. Following command can be executed to see help options available:
 
-**python3 stock_predictor.py --help**
+**python3 AutoArima(MSFT).py --help**
 
 ![help](images/file_help.png)
 
