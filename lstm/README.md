@@ -20,7 +20,14 @@ In this project, I have chosen OHLC average as our trading indicator.
 
 ## How to execute?
 
+First of all, install required dependencies using following command:
+
+   pip install -r requirements.txt
+
+
 LSTM implementation can either be visualized in jupyter notebook lstm.ipynb or can be run from stock_predictor.py. File stock_predictor.py contains doc string which will give clear objective of all the functions that are used. The jupyter notebook also contains Notes which describe the actions in a comprehensive manner.  
+
+You can also see demo video of LSTM on link: https://drive.google.com/file/d/1FcGU5Ud9WL1bsPm7YzDLlBmFKEwZiSxP/view?usp=sharing
 
 **Steps to execute python file**
 
@@ -59,6 +66,13 @@ Meanwhile in console, user can see tomorrow's prediction, its accuracy and rmse 
 Once you close first graph, user will see another graph which shows graph visualization of actual test data with respect to predicted outcome as follows:
 
 ![help](images/testgraph.png)
+
+User can also see simple prediction for tomorrow by just executing following command:
+
+   python3 stock_predictor.py msft --advice_for_tomorrow --dataperiod "6mo" --epochs 1
+
+Here, Microsoft stock's tomorrow's prediction will be forecasted. --dataperiod tells yfinance to operate on only 6 months of data. Meaning of these optionals can be seen in demo video and above image of help.
+
 
 
 ## Logic for Buy and Sell Stock explanation:
