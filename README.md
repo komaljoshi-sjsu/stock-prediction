@@ -93,7 +93,7 @@ For non time series based algorithms, future predictions on large range of test 
 
 | Algorithm      | Accuracy |
 | ----------- | ----------- |
-| KNN      | 70%       |
+| KNN      | 76%       |
 | Random Forest   | 70%        |
 
 
