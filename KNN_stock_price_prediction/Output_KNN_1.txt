@@ -1,6 +1,7 @@
 Stock Name:
  Welcome to Stock predictor
-Enter the starting date :(format -->  "yyyy-mm-dd" ) [*********************100%***********************]  1 of 1 completed
+Enter the starting date :(format -->  "yyyy-mm-dd" ) 
+[*********************100%***********************]  1 of 1 completed
 (679, 1) (679, 1)
 Fitting 3 folds for each of 120 candidates, totalling 360 fits
 -1.614573291188288
