@@ -36,13 +36,14 @@ class StockPrediction:
         X = X_scaled
         Y = df['prediction']
 
-        X_train, X_test, Y_train, Y_test = train_test_split(
-            X, Y, test_size=nodays, random_state=0)
-
+        split = np.random.rand(X.shape[0]) < len(X)-forecast_time
+        X_train = X[split]
+        Y_train = Y[split]
         X_prediction = X[-forecast_time:]
         Y_test = Y[-forecast_time:]
 
-        regressor = RandomForestRegressor(n_estimators=10, random_state=0)
+        regressor = RandomForestRegressor(
+            n_estimators=10, criterion='mae', random_state=0)
         regressor.fit(X_train, Y_train)
 
         # df2 = pd.DataFrame({'Actual': Y_test, 'Predicted': prediction})
@@ -81,8 +82,8 @@ class StockPrediction:
         plt.legend(["Predicted Values", "Actual Values"])
         # plt.xlabel('Days in future')
         # plt.ylabel('Predicted Close')
-        plt.show()
-        # plt.savefig('Predicted VS Actual')
+        # plt.show()
+        plt.savefig('Predicted VS Actual')
 
         # if (float(prediction[4]) > (float(last_row['Close'])) + 1):
         # output = ("\n\nStock:" + str(stock) + "\nPrior Close:\n" + str(last_row['Close']) + "\n\nPrediction in 1 Day: " + str(
@@ -93,7 +94,7 @@ class StockPrediction:
             mean_of_historical_close_avg = historical_close_avg.mean()
             if next_day_prediction > mean_of_historical_close_avg:
                 return 'buy'
-            elif next_day_prediction > mean_of_historical_close_avg:
+            elif next_day_prediction < mean_of_historical_close_avg:
                 return 'sell'
             else:
                 return 'hold'

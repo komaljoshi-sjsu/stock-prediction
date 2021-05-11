@@ -1,37 +1,37 @@
 MSFT
 [*********************100%***********************]  1 of 1 completed
-RMSE score:  1.597193295864496
-R-squared score:  0.9582925341988737
-Adjusted R-squared:  0.9578647653188622
+RMSE score:  1.3162388225734372
+R-squared score:  0.9716751096332878
+Adjusted R-squared:  0.971384597937219
 Prediction: Tomorrow (utc:2021-05-05) it is more favourable to buy
 Prediction: Tomorrow (utc:2021-05-06) it is more favourable to hold
 Prediction: Tomorrow (utc:2021-05-07) it is more favourable to hold
 Prediction: Tomorrow (utc:2021-03-26) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-03-29) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-03-30) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-03-31) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-01) it is more favourable to buy
-Prediction: Tomorrow (utc:2021-04-05) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-06) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-07) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-08) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-09) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-12) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-13) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-14) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-15) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-16) it is more favourable to hold
+Prediction: Tomorrow (utc:2021-03-29) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-30) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-31) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-01) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-05) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-04-06) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-07) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-08) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-09) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-12) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-04-13) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-04-14) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-15) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-04-16) it is more favourable to sell
 Prediction: Tomorrow (utc:2021-04-19) it is more favourable to buy
 Prediction: Tomorrow (utc:2021-04-20) it is more favourable to buy
 Prediction: Tomorrow (utc:2021-04-21) it is more favourable to buy
-Prediction: Tomorrow (utc:2021-04-22) it is more favourable to buy
-Prediction: Tomorrow (utc:2021-04-23) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-26) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-27) it is more favourable to hold
-Prediction: Tomorrow (utc:2021-04-28) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-04-22) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-23) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-26) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-27) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-04-28) it is more favourable to sell
 Prediction: Tomorrow (utc:2021-04-29) it is more favourable to buy
 Prediction: Tomorrow (utc:2021-04-30) it is more favourable to buy
 Prediction: Tomorrow (utc:2021-05-03) it is more favourable to buy
 Prediction: Tomorrow (utc:2021-05-04) it is more favourable to buy
-Correct predictions: 23
-Wrong predictions: 7
+Correct predictions: 21
+Wrong predictions: 9
