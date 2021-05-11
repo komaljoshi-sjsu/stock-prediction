@@ -1,7 +1,6 @@
 # USING ARIMA FOR STOCK TREND ANALYSIS AND ADVISE
 
 ## Expectation
-
 Capture Stock trend and advise user best course of action: Buy/Sell/Hold stock.
 
 The usecase is completely implemented. The algorithm can  produce future predictions and learn daily to correct its predictions for consequent days. 
@@ -17,6 +16,7 @@ There are various standard trading indicators used by investors to make decision
 * low
 * close
 * volume
+
 
 In this project, I have chosen closing price as our trading indicator.
 

@@ -1,0 +1,78 @@
+(1259, 1)
+             OHLC_avg
+Date                 
+2016-05-11  46.985642
+2016-05-12  47.095667
+2016-05-13  47.100253
+2016-05-16  47.072747
+2016-05-17  47.166521
+training dataframe: (1197, 1)
+testing dataframe: (62, 1)
+Prediction: Tomorrow (utc:2021-02-11) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-12) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-16) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-17) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-18) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-19) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-22) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-23) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-24) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-25) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-02-26) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-01) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-02) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-03) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-04) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-05) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-08) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-09) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-10) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-11) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-12) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-15) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-16) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-17) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-18) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-19) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-22) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-23) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-24) it is more favourable to buy
+Prediction: Tomorrow (utc:2021-03-25) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-26) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-29) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-30) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-03-31) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-01) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-05) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-06) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-07) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-08) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-09) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-12) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-13) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-14) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-15) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-16) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-19) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-20) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-21) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-22) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-23) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-26) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-27) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-28) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-29) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-04-30) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-05-03) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-05-04) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-05-05) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-05-06) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-05-07) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-05-10) it is more favourable to sell
+Prediction: Tomorrow (utc:2021-05-11) it is more favourable to sell
+Correct predictions: 50
+Wrong predictions: 12
+Percentage of correct predictions: 80.65%
+
+RMSE value without scaling :  8.987836885254652
+RMSE value with scaling :  0.04535939040558646
