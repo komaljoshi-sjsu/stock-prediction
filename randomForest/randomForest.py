@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 import numpy as np
 import yfinance as yf
@@ -121,8 +122,7 @@ class StockPrediction:
 
 def test() -> None:
     stockPrediction = StockPrediction()
-
-    stockPrediction.predictData('MSFT', 30)
+    stockPrediction.predictData(sys.argv[1], int(sys.argv[2]))
 
 
 if __name__ == "__main__":
