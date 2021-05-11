@@ -7,7 +7,7 @@ pip install -r requirements.txt
 `$ git clone https://github.com/komaljoshi-sjsu/stock-prediction`
 
 
-**Navigate to Files Containing SVM Implementation**
+**Navigate to Files Containing KNN Implementation**
 
 `$ cd KNN_stock_price_prediction/`
 
