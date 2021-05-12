@@ -55,6 +55,8 @@ It is located in **KNN_stock_price_prediction folder**.
 
 **Approach**
 
+In this study K-nearest neighbors (KNN) algorithm is used to predict the stock price. Here we have taken ohcl as average of Open,High,Low and Close values and used it as feature value to predict the stock price for next day.
+
 K-nearest neighbors (KNN) algorithm is a type of supervised ML algorithm which can be used for both classification as well as regression predictive problems .
 KNN follows two properties :
 
