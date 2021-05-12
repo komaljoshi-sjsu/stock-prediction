@@ -88,6 +88,14 @@ sklearn, matplotlib, pandas, yfinance, numpy and math
 
 It is located in **randomForest folder**.
 
+**Approach**
+
+Random Forest regressor runs the regression on multiple estimators and selects the best estimation based on score(MSE/MAE).
+
+**Testing**
+
+Currently, the data is split into training and testing where last 30 days represent testing. 1 months ago is treated as present.
+
 **Tools and Libraries**:
 
 sklearn, matplotlib, pandas, yfinance, numpy and math
